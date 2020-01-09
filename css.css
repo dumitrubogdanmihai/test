@@ -1,0 +1,11 @@
+p:before {
+    content: "About";
+    display: block;
+}
+p:after {
+    display:block;
+    content: oxy_button(actionID, 'bold');
+}
+p:empty{
+  content:"Information about the author of this topic";
+}
