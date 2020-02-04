@@ -28,7 +28,7 @@
             implementation may deviate from the expected theoretical behavior.</section>
         <section id="section_ors_x3p_pkb">
             <title>Theorems</title>
-        </section>
+          
         <section id="section_stg_1jp_pkb">
             <title>Theorem 1 (Error Reduction in BPP)</title>
         </section>
@@ -100,5 +100,16 @@
             time turing machines but cannot be computed by subexponential sized circuits. This fact
             is cleverly leveraged to derandomize any randomized computation. The proof of this
             theorem is outside the scope of this course.</p>
-    </body>
+
+        </section>
+        <section id="section_b55_wlp_pkb">
+            <title>Polynomial Identity Testing</title>
+            <p>One can ask whether there are interesting problems that are known to be in BPP but
+                not known to be in P. Although there are many examples of problems for which the
+                fastest algorithms are randomized (for example, primality testing), there are not so
+                many examples for which the only</p>
+            <p>known algorithm is randomized. A key such example is the problem of polynomial
+                identity testing.</p>
+        </section>
+  </body>
 </topic>
