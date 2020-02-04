@@ -23,7 +23,7 @@
                 (Monte Carlo algorithms, for example the Monte Carlo algorithm for the MFAS problem)
                 or fail to produce a result either by signaling a failure or failing to terminate.
                 In some cases, probabilistic algorithms are the only practical means of solving a
-                problem.</p><p/>In common practice, randomized algorithms are approximated using a
+                problem.</p>In common practice, randomized algorithms are approximated using a
             pseudorandom number generator in place of a true source of random bits; such an
             implementation may deviate from the expected theoretical behavior.</section>
         <section id="section_ors_x3p_pkb">
@@ -107,9 +107,40 @@
             <p>One can ask whether there are interesting problems that are known to be in BPP but
                 not known to be in P. Although there are many examples of problems for which the
                 fastest algorithms are randomized (for example, primality testing), there are not so
-                many examples for which the only</p>
-            <p>known algorithm is randomized. A key such example is the problem of polynomial
-                identity testing.</p>
+                many examples for which the only known algorithm is randomized. A key such example
+                is the problem of polynomial identity testing.</p>
+            <p>We are given an arithmetic circuit (namely a circuit that uses multiplication and
+                addition gates). The goal is to determine whether the polynomial computed by the
+                circuit is identically 0. There is a subtle issue here that needs to be clarified.
+                Note that two different polynomials may compute the same function on a particular
+                set of inputs. For example, if the inputs are all binary, then
+                    x<sub>i</sub><sup>2</sup>= x<sub>i</sub>for any variable x<sub>i</sub>. Indeed,
+                if we changed the problem above to ask whether or not the arithmetic circuit
+                computes the 0 function on binary inputs, then we obtain an NP-complete problem.</p>
+            <p>There is a simple randomized algorithm for identity testing. We pick random integers
+                from a large enough set and evaluate the circuit on those inputs. If the circuit
+                computes a non-zero polynomial, it can be shown that the output will be non-zero
+                with high probability. To actually make this work, we need to make sure that
+                evaluating the circuit can be done efficiently. Indeed the evaluation can easily
+                compute a number that is as big as 2<sup>2<sup>s</sup></sup> with a circuit of size
+                    <i>s</i>, which is too big to manipulate. It turns out that one can just do all
+                the evaluations modulo a large random prime number <i>p</i> and obtain the same
+                guarantees.</p>
+        </section>
+        <section id="section_lqp_kmp_pkb">
+            <title>Randomness vs non-determinism</title>
+            <p>Theorem 8. BPP ⊆ NP<sup>SAT</sup>.</p>
+            <p>Proof Suppose f ∈ BPP. Let us first reduce the error of the probabilistic algorithm
+                for <i>f</i> to 2<sup>−n</sup>. Suppose the algorithm uses m random bits. Thus, we
+                just need to be able to distinguish the case when M(x, r) accepts 1 − 2<sup>−n</sup>
+                fraction of all m bit strings from the case when it accepts only
+                2<sup>−n</sup>fraction of all m bit strings. Distinguishing the fractions 1 from 0
+                would be easy (just try a single string). Distinguishing the fractions 1 from &lt; 1
+                can be done with a query to SAT. So we shall reduce to this case.</p>
+            <p>Let u1, . . . , uk{0, 1}<sup>m</sup> be <i>k</i> random <i>m</i> bit strings, where
+                    <i>k</i> will be chosen to be much smaller than 2<sup>n</sup>. Then we have the
+                following claims, where here r ⊕ u<sub>i</sub> denotes the bitwise parity of the
+                m-bit string <i>r</i> with the m-bit string u<sub>i</sub> .</p>
         </section>
   </body>
 </topic>
