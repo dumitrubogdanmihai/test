@@ -1,12 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic id="topic_jzp_bhp_pkb">
-    <title></title>
+    <title>Randomized Computations</title>
     <prolog>
         <author>Bogdan Dumitru</author>
-        <author><data-about/>Average-Case Complexity.</author>
+        <data-about>Average-Case Complexity.</data-about>
+        <metadata>
+            <othermeta name="lecture" content="Computational Methods"/>
+        </metadata>
     </prolog>
     <body>
-        <p></p>
+        <section id="section_ytd_n3p_pkb"><title>Definition</title><p>A randomized algorithm is an
+                algorithm that employs a degree of randomness as part of its logic. The algorithm
+                typically uses uniformly random bits as an auxiliary input to guide its behavior, in
+                the hope of achieving good performance in the "average case" over all possible
+                choices of random bits. Formally, the algorithm's performance will be a random
+                variable determined by the random bits; thus either the running time, or the output
+                (or both) are random variables.</p><p>One has to distinguish between algorithms that
+                use the random input so that they always terminate with the correct answer, but
+                where the expected running time is finite (Las Vegas algorithms, for example
+                Quicksort), and algorithms which have a chance of producing an incorrect result
+                (Monte Carlo algorithms, for example the Monte Carlo algorithm for the MFAS problem)
+                or fail to produce a result either by signaling a failure or failing to terminate.
+                In some cases, probabilistic algorithms are the only practical means of solving a
+                problem.</p><p/>In common practice, randomized algorithms are approximated using a
+            pseudorandom number generator in place of a true source of random bits; such an
+            implementation may deviate from the expected theoretical behavior.</section>
+        <section id="section_ors_x3p_pkb">
+            <title>Theorems</title>
+        </section>
+        <section id="section_stg_1jp_pkb">
+            <title>Theorem 1 (Error Reduction in BPP)</title>
+        </section>
+        <section id="section_ptg_1jp_pkb">
+            <p>Suppose there is a randomized polynomial time machine M, a function f and a constant
+                c such that Prr[M(x, r) = f(x)] ≥ 1/2 + n −c. There for every constant d, there is a
+                randomized polynomial time machine M0 such that Prr[M0</p>
+            <p>(x, r) = f(x)] ≥</p>
+            <p>1 − 2</p>
+            <p>−n</p>
+            <p>d</p>
+            <p>.</p>
+        </section>
     </body>
 </topic>
