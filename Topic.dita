@@ -2,6 +2,10 @@
 <!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
 <topic id="topic_jzp_bhp_pkb">
     <title></title>
+    <prolog>
+        <author>Bogdan Dumitru</author>
+        <author><data-about/>Average-Case Complexity.</author>
+    </prolog>
     <body>
         <p></p>
     </body>
