@@ -34,13 +34,71 @@
         </section>
         <section id="section_ptg_1jp_pkb">
             <p>Suppose there is a randomized polynomial time machine M, a function f and a constant
-                c such that Prr[M(x, r) = f(x)] ≥ 1/2 + n −c. There for every constant d, there is a
-                randomized polynomial time machine M0 such that Prr[M0</p>
-            <p>(x, r) = f(x)] ≥</p>
-            <p>1 − 2</p>
-            <p>−n</p>
-            <p>d</p>
-            <p>.</p>
+                c such that <image
+                    href="gitgh://https%3A%2F%2Fgithub.com%2Fdumitrubogdanmihai%2Ftest/master/f1.png"
+                    id="image_h5b_pjp_pkb"/>
+            </p>
+            <p>There for every constant <i>d</i>, there is a randomized polynomial time machine M'
+                such that <image
+                    href="gitgh://https%3A%2F%2Fgithub.com%2Fdumitrubogdanmihai%2Ftest/master/f2.dita"
+                    id="image_v2f_bkp_pkb"/>.</p>
         </section>
+        <section id="section_dps_dkp_pkb">
+            <title>Theorem 2.</title>
+            <p>Let X1, . . . , Xn be independent random variables such that each X<sub>i</sub> is a
+                bit that is</p>
+            <p>equal to 1 with probability ≤ p. Then <image
+                    href="gitgh://https%3A%2F%2Fgithub.com%2Fdumitrubogdanmihai%2Ftest/master/f3.dita"
+                    id="image_m5q_jkp_pkb"/>.</p>
+        </section>
+        <section id="section_bqy_4kp_pkb">
+            <title>Theorem 3. BPP ⊆ EXP</title>
+            <p>Since RP is the same as the set of functions for which a random witness is a good
+                witness</p>
+        </section>
+        <section id="section_kp1_qkp_pkb">
+            <title>Theorem 4. RP ⊆ NP</title>
+        </section>
+        <section id="section_an5_rkp_pkb">
+            <title>Theorem 5. ZPP = RP ∩ coRP</title>
+            <p><b>Proof</b>: </p>
+            <p>Suppose f ∈ ZPP, via a randomized algorithm M whose expected running time is t(n).
+                Consider the algorithm that simulates M for 10t(n) steps, and outputs 0 if the
+                simulation halts. Then clearly, the algorithm only makes an error if the correct
+                answer is 1. On the other hand, the probability that running time of M exceeds
+                10t(n) is at most 1/10 (or else the expected running time would exceed t(n). Thus we
+                obtain an RP algorithm. The same idea (reversing the roles of 0 and 1) gives a coRP
+                algorithm.</p>
+            <p>For the other direction, suppose f has an RP algorithm M1 and a coRP algorithm M0.
+                Then on input x consider the algorithm that alternatively runs M0(x), M1(x), M0(x),
+                . . . until either M1(x) outputs 1, or M0(x) outputs 0. If M1(x) = 1, then it must
+                be that f(x) = 1. Similarly if M0(x) = 0, it must be that f(x) = 0. In any case, one
+                of these two algorithms will verify the value of x in an expected constant number of
+                runs.</p>
+        </section>
+        <section id="section_rxv_dlp_pkb">
+            <title>Theorem 6. BPP ∈ P/poly</title>
+            <p>The above theorem again easily following from the Chernoff-Hoeffding bound. We can
+                first amplify the error probability so that the probability of error is less than
+                2−n. Then by the union</p>
+            <p>bound, for each input length, there must be some fixed string r such that M(x, r) =
+                f(x) for each of the 2n choices of x. Then we can use a circuit to hardcode this r
+                and compute f in polynomial size.</p>
+            <p>We do not know whether BPP = P and this is a major open question (one that I am
+                personally very interested in). However, there have been some interesting
+                conditional results. For example, work of Impagliazzo, Nisan and Wigderson has led
+                to the following theorem: </p>
+        </section>
+        <section id="section_bsy_hlp_pkb">
+            <title>Theorem 7.</title>
+            <p>If there is some function f ∈ EXP such that for every constant e &lt; 0, <i>f</i>
+                cannot be computed by a circuit family of size 2<sup>en</sup>, then <b>BPP =
+                P</b>.</p>
+        </section>
+        <p>The theorem is interesting because the assumptions don’t seem to say anything about
+            useful. The assumption is that there is a function that can be computed by exponential
+            time turing machines but cannot be computed by subexponential sized circuits. This fact
+            is cleverly leveraged to derandomize any randomized computation. The proof of this
+            theorem is outside the scope of this course.</p>
     </body>
 </topic>
