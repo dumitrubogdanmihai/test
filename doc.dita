@@ -10,7 +10,7 @@
         </context>
         <steps>
             <step>
-                <cmd> sdf s</cmd>
+                <cmd> sdf ssss</cmd>
             </step>
         </steps>
     </taskbody>
