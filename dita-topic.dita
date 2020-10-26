@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="form-controls.css"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+
+<task id="prunning">
+    <title>Title</title>
+    <taskbody>
+        <context>
+            <p id="0">A</p>
+            <p id="1">B</p>
+            <p id="2">C</p>
+            <p id="3">D</p>
+            <p id="4">E</p>
+            <p id="5">F</p>
+            <p id="6">G</p>
+            <p id="7">H</p>
+            <p id="8">I</p>
+            <p id="9">J</p>
+        </context>
+    </taskbody>
+</task>
