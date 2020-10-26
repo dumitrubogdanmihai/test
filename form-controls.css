@@ -1,0 +1,95 @@
+*[id~="0"][class~="topic/p"]:before(29) {
+  content: "oxy_combobox"
+  oxy_combobox(
+          edit, "@attribute",
+          editable, false,
+          values, "value1, value2, value3",
+          labels, "Value no1, Value no2, Value no3",
+          onChange, oxy_action(
+            name, 'Insert',
+            operation, 'XQueryUpdateOperation',
+            arg-script, 'insert node <product>{xs:string(@attribute)}</product>as last into .'));
+}
+
+*[id~="1"][class~="topic/p"]:before(29) {
+ content: "oxy_popup" 
+ oxy_popup(
+         edit, '@href',
+         values, "Spring, Summer, Autumn, Winter",
+         tooltips, "Iris${comma}Snowdrop, Gardenia${comma}Liliac, Chrysanthemum${comma}Salvia, Gerbera",
+         selectionMode, single);
+}
+
+*[id~="2"][class~="topic/p"]:before(29) {
+ content: "oxy_button"  
+  oxy_button(actionID, 'NU_EXISTA_ACEST_IT', showIcon, true);
+}
+
+*[id~="3"][class~="topic/p"]:before(29) {
+ content: "oxy_buttonGroup"  
+ oxy_buttonGroup(
+    label, 'A group of actions', 
+    actions, 
+      oxy_action_list(
+          oxy_action(
+                name, 'Insert', 
+                description, 'Insert an element after the current one', 
+                operation, 'InsertFragmentOperation', 
+                arg-fragment, '<element></element>',
+                arg-insertLocation, '.',
+                arg-insertPosition, 'After'
+          ),
+          oxy_action(
+                name, 'Delete', 
+                description, 'Deletes the current element', 
+                operation, 'DeleteElementOperation' 
+          )
+      )
+  )
+}
+
+*[id~="4"][class~="topic/p"]:before(29) {
+ content: "oxy_checkbox"  
+ oxy_checkbox(
+     edit, "@attribute",
+     values, "On",
+     uncheckedValues, "Off",
+     labels, "On/Off"); 
+}
+
+
+*[id~="5"][class~="topic/p"]:before(29) {
+  content: "oxy_datePicker"
+  oxy_datePicker(edit, "@attribute", hoverPseudoclassName, 'showBorder')
+}
+
+
+*[id~="6"][class~="topic/p"]:before(29) {
+  content: "oxy_htmlContent"
+  oxy_htmlContent(
+      content, "<div style='font-weight:bold;'><button>My button in oxy_htmlContent</button></div>",
+      width, 400px);
+}
+
+*[id~="7"][class~="topic/p"]:before(29) {
+  content: "oxy_textArea"
+  oxy_textArea(
+    edit, '#content',
+    contentType, 'text/xml');
+}
+
+*[id~="8"][class~="topic/p"]:before(29) {
+  content: "oxy_textfield"
+  oxy_textfield(
+      edit, "@my_attr",
+      values, "value1, value2",
+      color, "red",
+      columns, 40);
+}
+
+*[id~="9"][class~="topic/p"]:before(29) {
+  content: "oxy_urlChooser"
+  oxy_urlChooser(
+  edit, "@file",
+  columns 25);
+}
