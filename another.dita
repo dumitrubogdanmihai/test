@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+<topic id="topic_jzp_bhp_pkb">
+    <title>Randomized Computations</title>
+    <prolog>
+        <author>Bogdan Dumitru</author>
+        <data-about>Average-Case Complexity.</data-about>
+        <metadata>
+            <othermeta name="lecture" content="Computational Methods"/>
+        </metadata>
+    </prolog>
+    <body>
+        <section id="section_ytd_n3p_pkb"><title>Definition</title><p>A randomized algorithm is an
+                algorithm that employs a degree of randomness as part of its logic. The algorithm
+                typically uses uniformly random bits as an auxiliary input to guide its behavior, in
+                the hope of achieving good performance in the "average case" over all possible
+                choices of random bits. Formally, the algorithm's performance will be a random
+                variable determined by the random bits; thus either the running time, or the output
+                (or both) are random variables.</p><p>One has to distinguish between algorithms that
+                use the random input so that they always terminate with the correct answer, but
+                where the expected running time is finite (Las Vegas algorithms, for example
+                Quicksort), and algorithms which have a chance of producing an incorrect result
+                (Monte Carlo algorithms, for example the Monte Carlo algorithm for the MFAS problem)
+                or fail to produce a result either by signaling a failure or failing to terminate.
+                In some cases, probabilistic algorithms are the only practical means of solving a
+                problem.</p>In common practice, randomized algorithms are approximated using a
+            pseudorandom number generator in place of a true source of random bits; such an
+            implementation may deviate from the expected theoretical behavior.</section>
+        <section id="section_ors_x3p_pkb">
+            <title>Theorems</title>
+          
+        <section id="section_stg_1jp_pkb">
+            <title>Theorem 1 (Error Reduction in BPP)</title>
+        </section>
+        <section id="section_ptg_1jp_pkb">
+            <p>Suppose there is a randomized polynomial time machine M, a function f and a constant
+                c such that <image
+                    href="gitgh://https%3A%2F%2Fgithub.com%2Fdumitrubogdanmihai%2Ftest/master/f1.png"
+                    id="image_h5b_pjp_pkb"/>
+            </p>
+            <p>There for every constant <i>d</i>, there is a randomized polynomial time machine M'
+                such that <image
+                    href="gitgh://https%3A%2F%2Fgithub.com%2Fdumitrubogdanmihai%2Ftest/master/f2.dita"
+                    id="image_v2f_bkp_pkb"/>.</p>
+        </section>
+        <section id="section_dps_dkp_pkb">
+            <title>Theorem 2.</title>
+            <p>Let X1, . . . , Xn be independent random variables such that each X<sub>i</sub> is a
+                bit that is</p>
+            <p>equal to 1 with probability ≤ p. Then <image
+                    href="gitgh://https%3A%2F%2Fgithub.com%2Fdumitrubogdanmihai%2Ftest/master/f3.dita"
+                    id="image_m5q_jkp_pkb"/>.</p>
+        </section>
+        <section id="section_bqy_4kp_pkb">
+            <title>Theorem 3. BPP ⊆ EXP</title>
+            <p>Since RP is the same as the set of functions for which a random witness is a good
+                witness</p>
+        </section>
+        <section id="section_kp1_qkp_pkb">
+            <title>Theorem 4. RP ⊆ NP</title>
+        </section>
+        <section id="section_an5_rkp_pkb">
+            <title>Theorem 5. ZPP = RP ∩ coRP</title>
+            <p><b>Proof</b>: </p>
+            <p>Suppose f ∈ ZPP, via a randomized algorithm M whose expected running time is t(n).
+                Consider the algorithm that simulates M for 10t(n) steps, and outputs 0 if the
+                simulation halts. Then clearly, the algorithm only makes an error if the correct
+                answer is 1. On the other hand, the probability that running time of M exceeds
+                10t(n) is at most 1/10 (or else the expected running time would exceed t(n). Thus we
+                obtain an RP algorithm. The same idea (reversing the roles of 0 and 1) gives a coRP
+                algorithm.</p>
+            <p>For the other direction, suppose f has an RP algorithm M1 and a coRP algorithm M0.
+                Then on input x consider the algorithm that alternatively runs M0(x), M1(x), M0(x),
+                . . . until either M1(x) outputs 1, or M0(x) outputs 0. If M1(x) = 1, then it must
+                be that f(x) = 1. Similarly if M0(x) = 0, it must be that f(x) = 0. In any case, one
+                of these two algorithms will verify the value of x in an expected constant number of
+                runs.</p>
+        </section>
+        <section id="section_rxv_dlp_pkb">
+            <title>Theorem 6. BPP ∈ P/poly</title>
+            <p>The above theorem again easily following from the Chernoff-Hoeffding bound. We can
+                first amplify the error probability so that the probability of error is less than
+                2−n. Then by the union</p>
+            <p>bound, for each input length, there must be some fixed string r such that M(x, r) =
+                f(x) for each of the 2n choices of x. Then we can use a circuit to hardcode this r
+                and compute f in polynomial size.</p>
+            <p>We do not know whether BPP = P and this is a major open question (one that I am
+                personally very interested in). However, there have been some interesting
+                conditional results. For example, work of Impagliazzo, Nisan and Wigderson has led
+                to the following theorem: </p>
+        </section>
+        <section id="section_bsy_hlp_pkb">
+            <title>Theorem 7.</title>
+            <p>If there is some function f ∈ EXP such that for every constant e &lt; 0, <i>f</i>
+                cannot be computed by a circuit family of size 2<sup>en</sup>, then <b>BPP =
+                P</b>.</p>
+        </section>
+        <p>The theorem is interesting because the assumptions don’t seem to say anything about
+            useful. The assumption is that there is a function that can be computed by exponential
+            time turing machines but cannot be computed by subexponential sized circuits. This fact
+            is cleverly leveraged to derandomize any randomized computation. The proof of this
+            theorem is outside the scope of this course.</p>
+
+        </section>
+        <section id="section_b55_wlp_pkb">
+            <title>Polynomial Identity Testing</title>
+            <p>One can ask whether there are interesting problems that are known to be in BPP but
+                not known to be in P. Although there are many examples of problems for which the
+                fastest algorithms are randomized (for example, primality testing), there are not so
+                many examples for which the only known algorithm is randomized. A key such example
+                is the problem of polynomial identity testing.</p>
+            <p>We are given an arithmetic circuit (namely a circuit that uses multiplication and
+                addition gates). The goal is to determine whether the polynomial computed by the
+                circuit is identically 0. There is a subtle issue here that needs to be clarified.
+                Note that two different polynomials may compute the same function on a particular
+                set of inputs. For example, if the inputs are all binary, then
+                    x<sub>i</sub><sup>2</sup>= x<sub>i</sub>for any variable x<sub>i</sub>. Indeed,
+                if we changed the problem above to ask whether or not the arithmetic circuit
+                computes the 0 function on binary inputs, then we obtain an NP-complete problem.</p>
+            <p>There is a simple randomized algorithm for identity testing. We pick random integers
+                from a large enough set and evaluate the circuit on those inputs. If the circuit
+                computes a non-zero polynomial, it can be shown that the output will be non-zero
+                with high probability. To actually make this work, we need to make sure that
+                evaluating the circuit can be done efficiently. Indeed the evaluation can easily
+                compute a number that is as big as 2<sup>2<sup>s</sup></sup> with a circuit of size
+                    <i>s</i>, which is too big to manipulate. It turns out that one can just do all
+                the evaluations modulo a large random prime number <i>p</i> and obtain the same
+                guarantees.</p>
+        </section>
+        <section id="section_lqp_kmp_pkb">
+            <title>Randomness vs non-determinism</title>
+            <p>Theorem 8. BPP ⊆ NP<sup>SAT</sup>.</p>
+            <p>Proof Suppose f ∈ BPP. Let us first reduce the error of the probabilistic algorithm
+                for <i>f</i> to 2<sup>−n</sup>. Suppose the algorithm uses m random bits. Thus, we
+                just need to be able to distinguish the case when M(x, r) accepts 1 − 2<sup>−n</sup>
+                fraction of all m bit strings from the case when it accepts only
+                2<sup>−n</sup>fraction of all m bit strings. Distinguishing the fractions 1 from 0
+                would be easy (just try a single string). Distinguishing the fractions 1 from &lt; 1
+                can be done with a query to SAT. So we shall reduce to this case.</p>
+            <p>Let u1, . . . , uk{0, 1}<sup>m</sup> be <i>k</i> random <i>m</i> bit strings, where
+                    <i>k</i> will be chosen to be much smaller than 2<sup>n</sup>. Then we have the
+                following claims, where here r ⊕ u<sub>i</sub> denotes the bitwise parity of the
+                m-bit string <i>r</i> with the m-bit string u<sub>i</sub> .</p>
+        </section>
+  </body>
+</topic>
